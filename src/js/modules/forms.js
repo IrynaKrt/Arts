@@ -1,31 +1,30 @@
-import { postData } from "../services/request";
+import {postData} from '../services/request';
 
 const forms = () => {
     const form = document.querySelectorAll('form'),
-          input = document.querySelectorAll('input'),
+          inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name="upload"]');
-  
     
     const message = {
-        loading: "Загрузка...",
-        success: "Спасибо! Мы скоро с вами свяжемся",
-        failure: "Что-то пошло не так...",
+        loading: 'Загрузка...',
+        success: 'Спасибо! Скоро мы с вами свяжемся',
+        failure: 'Что-то пошло не так...',
         spinner: 'assets/img/spinner.gif',
         ok: 'assets/img/ok.png',
         fail: 'assets/img/fail.png'
     };
 
     const path = {
-        designer:'assets/server.php',
+        designer: 'assets/server.php',
         question: 'assets/question.php'
     };
 
     const clearInputs = () => {
-        input.forEach(item => {
-            item.value ='';
+        inputs.forEach(item => {
+            item.value = '';
         });
         upload.forEach(item => {
-            item.previousElementSibling.textContent = 'Файл не выбран';
+            item.previousElementSibling.textContent = "Файл не выбран";
         });
     };
 
@@ -33,12 +32,9 @@ const forms = () => {
         item.addEventListener('input', () => {
             console.log(item.files[0]);
             let dots;
-            const arr =  item.files[0].name.split('.');
-            if(arr[0].length > 6) {
-                dots = "...";
-            } else {
-                dots = '.';
-            } 
+            const arr = item.files[0].name.split('.');
+
+            arr[0].length > 6 ? dots = "..." : dots = '.';
             const name = arr[0].substring(0, 6) + dots + arr[1];
             item.previousElementSibling.textContent = name;
         });
@@ -50,11 +46,11 @@ const forms = () => {
 
             let statusMessage = document.createElement('div');
             statusMessage.classList.add('status');
-            item.parentNode.appendChild(statusMessage); 
+            item.parentNode.appendChild(statusMessage);
 
-            item.classList.add('animated', 'fadeOutUp'); //скрытие формы(прозрачность)
+            item.classList.add('animated', 'fadeOutUp');
             setTimeout(() => {
-                item.style.display = 'none'; //полное скрытие формы со страницы
+                item.style.display = 'none';
             }, 400);
 
             let statusImg = document.createElement('img');
@@ -68,14 +64,10 @@ const forms = () => {
 
             const formData = new FormData(item);
             let api;
-            if(item.closest('.popup-design') || item.classList.contains('calc-form')) {
-                api = path.designer;
-            } else {
-                api = path.question; //проверка на тип формы
-            } 
+            item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;
             console.log(api);
 
-            postData('assets/server.php', formData)
+            postData(api, formData)
                 .then(res => {
                     console.log(res);
                     statusImg.setAttribute('src', message.ok);
@@ -92,7 +84,7 @@ const forms = () => {
                         item.style.display = 'block';
                         item.classList.remove('fadeOutUp');
                         item.classList.add('fadeInUp');
-                    }, 2000);
+                    }, 5000);
                 });
         });
     });
