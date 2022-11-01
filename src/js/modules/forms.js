@@ -1,6 +1,7 @@
 import {postData} from '../services/request';
+import calc from './calc';
 
-const forms = () => {
+const forms = (costPicture) => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name="upload"]');
@@ -66,6 +67,11 @@ const forms = () => {
             let api;
             item.closest('.popup-design') || item.classList.contains('calc-form') ? api = path.designer : api = path.question;
             console.log(api);
+            if (item.closest('.calc')) {
+                for (let key in costPicture) {
+                    formData.append(key, costPicture[key]);
+                }
+            }
 
             postData(api, formData)
                 .then(res => {
@@ -79,6 +85,7 @@ const forms = () => {
                 })
                 .finally(() => {
                     clearInputs();
+                    clearInputs(calc);
                     setTimeout(() => {
                         statusMessage.remove();
                         item.style.display = 'block';

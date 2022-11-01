@@ -1,5 +1,8 @@
+import { postData } from "../services/request";
+
 const drop = () => {
-    const fileInputs = document.querySelectorAll('[name="upload"]');
+    const fileInputs = document.querySelectorAll('[name="upload"]'),
+          upload = document.querySelectorAll('.begin');
 
     ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
         fileInputs.forEach(input => {
@@ -13,14 +16,16 @@ const drop = () => {
     }
 
     function highlight(item) {
-        item.closest('.file_upload').style.border = "5px solid yellow";
-        item.closest('.file_upload').style.backgroundColor = "rgba(0,0,0, .7)";
+        item.closest('.file_upload').style.border = "5px solid pink";
+        item.closest('.file_upload').style.backgroundColor = "rgba(0,0,0, .4)";
     }
 
     function unhighlight(item) {
         item.closest('.file_upload').style.border = "none";
         if (item.closest('.calc-form')) {
             item.closest('.file_upload').style.backgroundColor = "#fff";
+        } else if('.begin'){
+            item.closest('.file_upload').style.backgroundColor = "#f7e7e6";
         } else {
             item.closest('.file_upload').style.backgroundColor = "#ededed";
         }
@@ -38,6 +43,14 @@ const drop = () => {
         });
     });
 
+const clearInputs = () => {
+        fileInputs.forEach(item => {
+            item.value = '';
+        });
+        fileInputs.forEach(item => {
+            item.previousElementSibling.textContent = "Файл не выбран";
+        });
+    };
     fileInputs.forEach(input => {
         input.addEventListener('drop', (e) => {
             input.files = e.dataTransfer.files;
@@ -51,6 +64,23 @@ const drop = () => {
             } 
             const name = arr[0].substring(0, 6) + dots + arr[1];
             input.previousElementSibling.textContent = name;
+
+            if(input.closest('.main')){
+                
+                const formData = new FormData();
+                formData.append('file', input.files[0]);
+
+                postData('assets/server.php', formData)
+                    .then(result => {
+                        console.log(result);
+                    })
+                    .catch(() => {
+                        console.log('Error');
+                    })
+                    .finally(() => {
+                        setTimeout(clearInputs(), 1000);
+                    });
+            }
         });
     });
 

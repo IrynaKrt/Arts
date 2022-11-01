@@ -18,7 +18,13 @@ const showMoreStyles = (trigger, wrapper) => {
     btn.addEventListener('click', function() {
         getResource('assets/db.json')
             .then(res => createCards(res.styles))
-            .catch(error => console.log(error));
+            .catch(() => {
+                let statusMessage = document.createElement('div');
+                statusMessage.classList.add('status');
+                statusMessage.textContent = 'Что-то пошло не так';
+                statusMessage.style.cssText = 'text-align: center; font-size: 250%, color:blue';
+                document.querySelector(wrapper).appendChild(statusMessage);
+            });
 
         this.remove();
     });

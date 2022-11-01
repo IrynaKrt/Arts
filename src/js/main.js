@@ -15,16 +15,29 @@ import drop from './modules/drop';
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
+    let noPortfolio = {
+        first: 'grandmother',
+        second: 'granddad'
+    };
+
+    let state = {
+        size: "",
+        material: "",
+        options: "",
+        promo: "",
+        totalPrice: ""
+    };
+
     modals();
     sliders('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
     sliders('.main-slider-item', 'vertical');
-    forms();
+    forms(state);
     mask('[name="phone"]');
     checkTextInputs('[name="name"]');
     checkTextInputs('[name="message"]');
     showMoreStyles('.button-styles', '#styles .row');
-    calc('#size', '#material', '#options', '.promocode', '.calc-price');
-    filter();
+    calc(state);
+    filter(noPortfolio);
     pictureSize('.sizes-block');
     accordion('.accordion-heading');
     burger('.burger-menu', '.burger');

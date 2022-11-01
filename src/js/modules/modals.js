@@ -4,6 +4,7 @@ const modals = () => {
         const trigger = document.querySelectorAll(triggerSelector),
               modal = document.querySelector(modalSelector),
               close = document.querySelector(closeSelector),
+              giftTrigger = document.querySelector('.fixed-gift'),
               windows = document.querySelectorAll('[data-modal]'),
               scroll = calcScroll();
 
@@ -27,6 +28,7 @@ const modals = () => {
                 modal.style.display = "block";
                 document.body.style.overflow = "hidden";
                 document.body.style.marginRight = `${scroll}px`;
+                giftTrigger.style.right = `${(+getComputedStyle(giftTrigger).right.replace(/\D/g, '') + calcScroll())}px`;
             });
         });
 
@@ -38,6 +40,7 @@ const modals = () => {
             modal.style.display = "none";
             document.body.style.overflow = "";
             document.body.style.marginRight = `0px`;
+            giftTrigger.style.right = '';
         });
 
         modal.addEventListener('click', (e) => {
@@ -49,6 +52,7 @@ const modals = () => {
                 modal.style.display = "none";
                 document.body.style.overflow = ""; 
                 document.body.style.marginRight = `0px`;
+                giftTrigger.style.right = '';
             }
         });
     }
