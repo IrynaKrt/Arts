@@ -1,8 +1,7 @@
 import { postData } from "../services/request";
 
 const drop = () => {
-    const fileInputs = document.querySelectorAll('[name="upload"]'),
-          upload = document.querySelectorAll('.begin');
+    const fileInputs = document.querySelectorAll('[name="upload"]');
 
     ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
         fileInputs.forEach(input => {
@@ -43,14 +42,15 @@ const drop = () => {
         });
     });
 
-const clearInputs = () => {
-        fileInputs.forEach(item => {
-            item.value = '';
-        });
-        fileInputs.forEach(item => {
-            item.previousElementSibling.textContent = "Файл не выбран";
-        });
-    };
+    const clearInputs = () => {
+            fileInputs.forEach(item => {
+                item.value = '';
+            });
+            fileInputs.forEach(item => {
+                item.previousElementSibling.textContent = "Файл не выбран";
+            });
+        };
+
     fileInputs.forEach(input => {
         input.addEventListener('drop', (e) => {
             input.files = e.dataTransfer.files;
@@ -78,7 +78,8 @@ const clearInputs = () => {
                         console.log('Error');
                     })
                     .finally(() => {
-                        setTimeout(clearInputs(), 1000);
+                        setTimeout(clearInputs(), 2000);
+                        
                     });
             }
         });

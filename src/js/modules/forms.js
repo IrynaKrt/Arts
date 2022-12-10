@@ -85,7 +85,6 @@ const forms = (costPicture) => {
                 })
                 .finally(() => {
                     clearInputs();
-                    clearInputs(calc);
                     setTimeout(() => {
                         statusMessage.remove();
                         item.style.display = 'block';

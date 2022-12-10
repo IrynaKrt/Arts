@@ -25,7 +25,6 @@ const pictureSize = (imgSelector) => {
         block.addEventListener('mouseout', () => {
             hideImg(block);
         });
-
     });
 };
 
