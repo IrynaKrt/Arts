@@ -12,5 +12,5 @@
 #### I am ready to learn and learn new things, because I want to be useful!
 
 ## About this project:
-#### This is my first project implemented on a pure Javascript! The "final" results of this work are saved in the master branch for now!
+#### This is my second project implemented on a pure Javascript! The "final" results of this work are saved in the master branch for now!
 #### I thank in advance those who will express their objective opinion and tell me what can be improved ♡
