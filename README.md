@@ -1,5 +1,5 @@
 # Arts
-##### project in work
+##### https://irynakrt.github.io/Arts/dist
 # Iryna Sittsava
 ## Student & future full-stack developer
 
