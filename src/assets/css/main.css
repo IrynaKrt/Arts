@@ -30,6 +30,7 @@
 * {
   box-sizing: border-box;
   outline: none;
+  scroll-behavior: smooth;
 }
 html {
   font-size: 10px;
@@ -118,6 +119,12 @@ h4 {
   cursor: auto;
   font-family: 'Circe Bold', sans-serif;
   font-size: 1.5rem;
+}
+.burger-elem {
+  display: none;
+}
+header .burger-menu {
+  display: none;
 }
 .header .burger img {
   width: 2rem;
@@ -1330,6 +1337,12 @@ h4 {
     width: 1rem;
     height: 1rem;
   }
+  .burger-elem {
+    display: none;
+  }
+  header .burger-menu {
+    display: none;
+  }
   .header-menu li {
     font-size: 1.4rem;
     padding: 2rem 1rem;
@@ -1419,6 +1432,16 @@ h4 {
   }
   .header .burger span {
     display: none;
+  }
+  .burger-art {
+    display: none;
+  }
+  .burger-elem {
+    display: block;
+    cursor: pointer;
+  }
+  header .burger-menu {
+    display: block;
   }
   .header .burger img {
     width: 2rem;

@@ -10,6 +10,7 @@ const modals = () => {
 
         trigger.forEach(item => {
             item.addEventListener('click', (e) => {
+                e.preventDefault();
                 if (e.target) {
                     e.preventDefault();
                 }
@@ -102,9 +103,10 @@ const modals = () => {
 
     bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
     bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
+    bindModal('.styles-block a', '.popup-consultation', '.popup-consultation .popup-close');
     bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true);
     openByScroll('.fixed-gift');
-    // showModalByTime('.popup-consultation',60000);
+    showModalByTime('.popup-consultation',60000);
 };
 
 export default modals;

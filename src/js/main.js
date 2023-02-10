@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
     filter(noPortfolio);
     pictureSize('.sizes-block');
     accordion('.accordion-heading');
-    burger('.burger-menu', '.burger');
+    burger('.burger-menu', '.burger-elem', '.burger-item');
     scrolling('.pageup');
     drop();
 });

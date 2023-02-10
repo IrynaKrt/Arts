@@ -30,7 +30,7 @@ const showMoreStyles = (trigger, wrapper) => {
     });
 
     function createCards(response) {
-        response.forEach(({src, title, link}) => {
+        response.forEach(({src, title}) => {
             let card = document.createElement('div');
 
             card.classList.add('animated', 'fadeInUp', 'col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
@@ -39,7 +39,7 @@ const showMoreStyles = (trigger, wrapper) => {
                 <div class="styles-block">
                     <img src=${src} alt="style">
                     <h4>${title}</h4>
-                    <a href=${link}>Подробнее</a>
+                    <a href='#promo'>Подробнее</a>
                 </div>
             `;
 
