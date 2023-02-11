@@ -16,7 +16,6 @@ const filter = () => {
         
         if(markType) {
             markType.forEach(mark => {
-                console.log('m');
                 mark.style.display = 'block';
                 mark.classList.add('animated', 'fadeIn');
             });
@@ -39,7 +38,6 @@ const filter = () => {
         if(target.classList.contains('grandmother') || target.classList.contains('granddad')) {
             no.style.display = 'block';
             no.classList.remove('animated', 'fadeIn');
-            console.log('j');
         } else {
             no.style.display = 'none';
             no.classList.remove('animated', 'fadeIn');
